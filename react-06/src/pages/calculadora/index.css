@@ -1,0 +1,20 @@
+.page-calculadora {
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        > div {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            label {
+                display: inline-block;
+                width: 250px;
+                text-align: right;
+            }
+        }
+    }
+}

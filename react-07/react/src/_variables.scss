@@ -1,0 +1,141 @@
+// ============================================
+// VARIABLES & MIXINS - Design System
+// ============================================
+
+// -------------------- Colors --------------------
+$primary-color: #667eea;
+$primary-hover: #5563c1;
+$secondary-color: #764ba2;
+
+$danger-color: #ef4444;
+$danger-hover: #dc2626;
+$warning-color: #fbbf24;
+$warning-hover: #f59e0b;
+
+$text-primary: #111827;
+$text-secondary: #555;
+$text-muted: #777;
+$text-white: #ffffff;
+
+$bg-primary: #f8fafc;
+$bg-card: #f9f9f9;
+$bg-hover: #f1f5f9;
+$bg-table-header: #f3f4f6;
+
+$border-color: #ddd;
+$border-light: #ccc;
+$border-focus: #667eea;
+
+// -------------------- Gradients --------------------
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$dark-gradient: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+
+// -------------------- Spacing --------------------
+$spacing-xs: 0.3rem;   // 4.8px
+$spacing-sm: 0.5rem;   // 8px
+$spacing-md: 1rem;     // 16px
+$spacing-lg: 1.5rem;   // 24px
+$spacing-xl: 2rem;     // 32px
+$spacing-2xl: 2.5rem;  // 40px
+
+// -------------------- Border Radius --------------------
+$radius-sm: 5px;
+$radius-md: 6px;
+$radius-lg: 10px;
+$radius-xl: 12px;
+$radius-full: 50px;
+
+// -------------------- Shadows --------------------
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+// -------------------- Transitions --------------------
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+
+// -------------------- Breakpoints --------------------
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+// ============================================
+// MIXINS - Reusable Patterns
+// ============================================
+
+// Flexbox centering
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+// Card styling
+@mixin card-style($padding: $spacing-lg, $radius: $radius-lg) {
+  background: $bg-card;
+  padding: $padding;
+  border-radius: $radius;
+  box-shadow: $shadow-md;
+}
+
+// Form input styling
+@mixin form-input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: $radius-md;
+  border: 1px solid $border-light;
+  font-size: 1rem;
+  transition: all $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $border-focus;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+  }
+}
+
+// Button base styling
+@mixin button-base($padding: 0.6rem 1.2rem) {
+  padding: $padding;
+  border: none;
+  border-radius: $radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: 1rem;
+}
+
+// Primary button
+@mixin button-primary {
+  background-color: $primary-color;
+  color: $text-white;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+// Danger button
+@mixin button-danger {
+  background-color: $danger-color;
+  color: $text-white;
+
+  &:hover {
+    background-color: $danger-hover;
+  }
+}
+
+// Warning button
+@mixin button-warning {
+  background-color: $warning-color;
+  color: $text-white;
+
+  &:hover {
+    background-color: $warning-hover;
+  }
+}

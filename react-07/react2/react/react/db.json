@@ -1,0 +1,196 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nome_completo": "Lucas Andrade",
+            "email": "lucas@email.com",
+            "data_nascimento": "2000-05-20",
+            "ativo": true
+        },
+        {
+            "id": 2,
+            "nome_completo": "Maria Silva",
+            "email": "maria@email.com",
+            "data_nascimento": "1995-08-12",
+            "ativo": false
+        }
+    ],
+    "livros": [
+        {
+            "id": 1,
+            "titulo": "Aprendendo Java",
+            "autor": "João Costa",
+            "genero": "Educação",
+            "data_publicacao": "2022-03-10",
+            "disponivel": true,
+            "capa_url": "https://exemplo.com/capa1.jpg"
+        },
+        {
+            "id": 2,
+            "titulo": "React na Prática",
+            "autor": "Ana Souza",
+            "genero": "Tecnologia",
+            "data_publicacao": "2023-01-05",
+            "disponivel": false,
+            "capa_url": "https://exemplo.com/capa2.jpg"
+        }
+    ],
+    "filmes": [
+        {
+            "id": 1,
+            "titulo": "O Grande Filme",
+            "diretor": "Carlos Lima",
+            "data_lancamento": "2020-12-20",
+            "duracao_minutos": 120,
+            "em_cartaz": true,
+            "cartaz_url": "https://exemplo.com/cartaz1.jpg"
+        },
+        {
+            "id": 2,
+            "titulo": "Aventura Incrível",
+            "diretor": "Mariana Rocha",
+            "data_lancamento": "2019-07-15",
+            "duracao_minutos": 95,
+            "em_cartaz": false,
+            "cartaz_url": "https://exemplo.com/cartaz2.jpg"
+        }
+    ],
+    "produtos": [
+        {
+            "id": 1,
+            "nome": "Camiseta",
+            "descricao": "Camiseta de algodão",
+            "preco": 49.90,
+            "data_criacao": "2023-02-10",
+            "disponivel": true
+        },
+        {
+            "id": 2,
+            "nome": "Tênis",
+            "descricao": "Tênis esportivo",
+            "preco": 199.90,
+            "data_criacao": "2023-01-20",
+            "disponivel": false
+        }
+    ],
+    "eventos": [
+        {
+            "id": 1,
+            "titulo": "Show de Rock",
+            "local": "Estádio Central",
+            "data_evento": "2025-09-30",
+            "capacidade": 5000,
+            "gratuito": false,
+            "banner_url": "https://exemplo.com/banner1.jpg"
+        },
+        {
+            "id": 2,
+            "titulo": "Feira de Livros",
+            "local": "Parque Municipal",
+            "data_evento": "2025-10-10",
+            "capacidade": 800,
+            "gratuito": true,
+            "banner_url": "https://exemplo.com/banner2.jpg"
+        }
+    ],
+    "receitas": [
+        {
+            "id": 1,
+            "nome": "Bolo de Chocolate",
+            "ingredientes": "Farinha, açúcar, chocolate, ovos",
+            "instrucoes": "Misturar e assar",
+            "tempo_preparo_minutos": 60,
+            "data_criacao": "2025-01-10",
+            "vegetariana": true,
+            "foto_url": "https://exemplo.com/bolo.jpg"
+        },
+        {
+            "id": 2,
+            "nome": "Frango Assado",
+            "ingredientes": "Frango, sal, alho",
+            "instrucoes": "Temperar e assar",
+            "tempo_preparo_minutos": 90,
+            "data_criacao": "2025-02-15",
+            "vegetariana": false,
+            "foto_url": "https://exemplo.com/frango.jpg"
+        }
+    ],
+    "musicas": [
+        {
+            "id": 1,
+            "titulo": "Melodia do Amor",
+            "artista": "Lucas Andrade",
+            "album": "Amor e Paz",
+            "data_lancamento": "2024-05-10",
+            "explicita": false,
+            "capa_album_url": "https://exemplo.com/musica1.jpg"
+        },
+        {
+            "id": 2,
+            "titulo": "Festa na Cidade",
+            "artista": "Maria Silva",
+            "album": "Noite Feliz",
+            "data_lancamento": "2023-08-15",
+            "explicita": true,
+            "capa_album_url": "https://exemplo.com/musica2.jpg"
+        }
+    ],
+    "pets": [
+        {
+            "id": 1,
+            "nome": "Rex",
+            "especie": "Cachorro",
+            "raca": "Labrador",
+            "data_nascimento": "2021-03-20",
+            "vacinado": true,
+            "foto_url": "https://exemplo.com/rex.jpg"
+        },
+        {
+            "id": 2,
+            "nome": "Mia",
+            "especie": "Gato",
+            "raca": "Siamês",
+            "data_nascimento": "2022-06-15",
+            "vacinado": false,
+            "foto_url": "https://exemplo.com/mia.jpg"
+        }
+    ],
+    "carros": [
+        {
+            "id": 1,
+            "marca": "Toyota",
+            "modelo": "Corolla",
+            "ano_lancamento": "2020-01-01",
+            "cor": "Prata",
+            "eletrico": false
+        },
+        {
+            "id": 2,
+            "marca": "Tesla",
+            "modelo": "Model 3",
+            "ano_lancamento": "2023-05-01",
+            "cor": "Preto",
+            "eletrico": true
+        }
+    ],
+    "hoteis": [
+        {
+            "id": 1,
+            "nome": "Hotel Central",
+            "localizacao": "São Paulo",
+            "avaliacao": 4.5,
+            "data_abertura": "2018-03-10",
+            "wifi": true,
+            "foto_url": "https://exemplo.com/hotel1.jpg"
+        },
+        {
+            "id": 2,
+            "nome": "Pousada Praia",
+            "localizacao": "Rio de Janeiro",
+            "avaliacao": 4.0,
+            "data_abertura": "2020-07-15",
+            "wifi": false,
+            "foto_url": "https://exemplo.com/hotel2.jpg"
+        }
+    ]
+}

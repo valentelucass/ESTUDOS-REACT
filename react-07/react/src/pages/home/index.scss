@@ -1,0 +1,170 @@
+@import '../../_variables';
+
+/* ============================================
+   HOME PAGE STYLES
+   ============================================ */
+
+.home {
+  .app-container {
+    min-height: 100dvh;
+    @include flex-center(column, 0);
+  }
+
+  /* -------------------- Header Section -------------------- */
+  .app-header {
+    @include flex-center(column, 12px);
+    width: 100%;
+    padding: $spacing-xl $spacing-lg;
+    text-align: center;
+    gap: 12px;
+    
+    // Visual
+    background: $primary-gradient;
+    color: $text-white;
+    border-bottom: 2px solid #e5e7eb;
+    box-shadow: $shadow-md;
+    
+    // Layout
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* -------------------- Navigation -------------------- */
+  .nav {
+    @include flex-center(row, $spacing-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+      // Layout
+      padding: 10px 16px;
+      
+      // Visual
+      text-decoration: none;
+      color: $text-white;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: $radius-full;
+      
+      // Interaction
+      transition: all $transition-normal;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  /* -------------------- Main Content -------------------- */
+  .app-main {
+    flex: 1;
+    width: 100%;
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    padding: $spacing-lg;
+  }
+
+  /* -------------------- Hero Section -------------------- */
+  .hero {
+    margin: $spacing-xl;
+    margin-bottom: $spacing-2xl;
+    padding: 40px $spacing-xl;
+    text-align: center;
+    
+    // Visual
+    background: linear-gradient(135deg, $bg-primary 0%, #e2e8f0 100%);
+    border-radius: $radius-xl;
+
+    h1 {
+      margin: 0 0 16px 0;
+      font-size: 2.5rem;
+      background: $primary-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      margin: 0 auto;
+      max-width: 600px;
+      color: $text-muted;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  }
+
+  /* -------------------- Cards Grid -------------------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-lg;
+    max-width: $breakpoint-xl;
+    margin: $spacing-xl auto;
+    padding: $spacing-xl 0;
+    justify-content: center;
+  }
+
+  .card {
+    // Layout
+    display: block;
+    padding: $spacing-lg;
+    position: relative;
+    overflow: hidden;
+    
+    // Visual
+    text-decoration: none;
+    color: $text-white;
+    background: $primary-gradient;
+    border: none;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-md;
+    
+    // Interaction
+    transition: all $transition-normal;
+
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 30px rgba($primary-color, 0.3);
+      background: linear-gradient(135deg, $secondary-color 0%, $primary-color 100%);
+    }
+  }
+
+  .card-title {
+    position: relative;
+    z-index: 1;
+    margin-bottom: $spacing-xs;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .card-desc {
+    position: relative;
+    z-index: 1;
+    margin-top: $spacing-xs;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* -------------------- Footer Section -------------------- */
+  .app-footer {
+    width: 100%;
+    margin-top: auto;
+    padding: $spacing-lg;
+    text-align: center;
+    
+    // Visual
+    color: $text-white;
+    background: $dark-gradient;
+    border-top: 2px solid #e5e7eb;
+  }
+}

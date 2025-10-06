@@ -1,0 +1,136 @@
+@import '../../_variables';
+
+/* ============================================
+   EXERCICIO 5 STYLES
+   ============================================ */
+
+.exercicio5 {
+  font-family: 'Inter', sans-serif;
+  padding: $spacing-xl;
+
+  /* -------------------- Typography -------------------- */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: $spacing-sm;
+    text-align: center;
+    color: $text-primary;
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    color: $text-secondary;
+  }
+
+  /* -------------------- Form Styles -------------------- */
+  form {
+    @include card-style($spacing-lg, $radius-lg);
+    max-width: 700px;
+    margin: 0 auto $spacing-xl auto;
+
+    div {
+      margin-bottom: $spacing-md;
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: $spacing-xs;
+        color: $text-primary;
+      }
+
+      input[type='text'],
+      input[type='email'],
+      input[type='date'] {
+        @include form-input;
+      }
+
+      input[type='checkbox'] {
+        margin-right: $spacing-sm;
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+
+    .buttons {
+      @include flex-center(row, $spacing-md);
+      justify-content: flex-end;
+
+      button {
+        @include button-base($spacing-sm $spacing-md);
+
+        &:first-child {
+          @include button-primary;
+        }
+
+        &:last-child {
+          @include button-danger;
+        }
+      }
+    }
+  }
+
+  /* -------------------- Users Table -------------------- */
+  .usuarios {
+    max-width: 900px;
+    margin: 0 auto;
+
+    h3 {
+      margin-bottom: $spacing-md;
+      text-align: center;
+      color: $text-primary;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      background: white;
+      border-radius: $radius-md;
+      overflow: hidden;
+      box-shadow: $shadow-sm;
+
+      th,
+      td {
+        padding: $spacing-sm;
+        border-bottom: 1px solid $border-color;
+      }
+
+      th {
+        background-color: $bg-table-header;
+        font-weight: 600;
+        color: $text-primary;
+      }
+
+      tr:hover {
+        background-color: $bg-hover;
+      }
+
+      .acoes {
+        @include flex-center(row, $spacing-sm);
+
+        button {
+          @include button-base($spacing-xs $spacing-sm);
+          font-size: 0.85rem;
+
+          &:first-child {
+            @include button-warning;
+          }
+
+          &:last-child {
+            @include button-danger;
+          }
+        }
+      }
+    }
+
+    .vazio {
+      text-align: center;
+      padding: $spacing-xl;
+      color: $text-muted;
+
+      div {
+        margin: $spacing-sm 0;
+      }
+    }
+  }
+}

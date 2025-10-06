@@ -1,0 +1,331 @@
+import { useState } from 'react';
+import Header from '../../components/header/index.jsx'
+import Footer from '../../components/footer/index.jsx'
+import './index.scss'
+
+export default function Exercicio4() {
+
+    const [formData, setFormData] = useState({
+        nome_completo: '',
+        email: '',
+        data_nascimento: '',
+        ativo: false
+    });
+
+    const [usuarios, setUsuarios] = useState([]);
+    const [editando, setEditando] = useState(null);
+    const [filtro, setFiltro] = useState('');
+    const [filtroDataInicio, setFiltroDataInicio] = useState('');
+    const [filtroDataFim, setFiltroDataFim] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value
+        });
+    };
+
+    const handleFilterChange = (e) => {
+        setFiltro(e.target.value);
+    };
+
+    const handleDataInicioChange = (e) => {
+        setFiltroDataInicio(e.target.value);
+    };
+
+    const handleDataFimChange = (e) => {
+        setFiltroDataFim(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (editando !== null) {
+            // Editando usuário existente
+            const usuariosAtualizados = usuarios.map(usuario => 
+                usuario.id === editando ? { ...formData, id: editando } : usuario
+            );
+            setUsuarios(usuariosAtualizados);
+            setEditando(null);
+            alert('Usuário atualizado com sucesso!');
+        } else {
+            // Adicionando novo usuário
+            const novoUsuario = {
+                ...formData,
+                id: Date.now() // ID simples baseado no timestamp
+            };
+            setUsuarios([...usuarios, novoUsuario]);
+            alert('Usuário cadastrado com sucesso!');
+        }
+
+        // Limpar formulário
+        setFormData({
+            nome_completo: '',
+            email: '',
+            data_nascimento: '',
+            ativo: false
+        });
+    };
+
+    const handleEdit = (usuario) => {
+        setFormData({
+            nome_completo: usuario.nome_completo,
+            email: usuario.email,
+            data_nascimento: usuario.data_nascimento,
+            ativo: usuario.ativo
+        });
+        setEditando(usuario.id);
+    };
+
+    const handleDelete = (id) => {
+        if (window.confirm('Tem certeza que deseja excluir este usuário?')) {
+            setUsuarios(usuarios.filter(usuario => usuario.id !== id));
+            alert('Usuário excluído com sucesso!');
+        }
+    };
+
+    const limparFiltros = () => {
+        setFiltro('');
+        setFiltroDataInicio('');
+        setFiltroDataFim('');
+    };
+
+    // Filtrar usuários baseado no termo de busca e intervalo de datas
+    const usuariosFiltrados = usuarios.filter(usuario => {
+        const termoBusca = filtro.toLowerCase();
+        const nomeOuEmailMatch = (
+            usuario.nome_completo.toLowerCase().includes(termoBusca) ||
+            usuario.email.toLowerCase().includes(termoBusca)
+        );
+
+        // Filtro por intervalo de datas
+        let dataMatch = true;
+        if (filtroDataInicio || filtroDataFim) {
+            const dataNascimento = new Date(usuario.data_nascimento);
+            
+            if (filtroDataInicio) {
+                const dataInicio = new Date(filtroDataInicio);
+                if (dataNascimento < dataInicio) {
+                    dataMatch = false;
+                }
+            }
+            
+            if (filtroDataFim) {
+                const dataFim = new Date(filtroDataFim);
+                if (dataNascimento > dataFim) {
+                    dataMatch = false;
+                }
+            }
+        }
+
+        return nomeOuEmailMatch && dataMatch;
+    });
+
+    return (
+        
+        <div className="exercicio4">
+            <Header titulo="exercicio4" />
+            <h1 className="exercicio-title">👤 CRUD de Usuários com Filtro de Datas</h1>
+            <p className="exercicio-subtitle">
+                Sistema completo para gerenciar usuários com filtros avançados por nome, email e intervalo de datas
+            </p>
+
+            <form className="crud-form" onSubmit={handleSubmit}>
+                <div className="form-grid">
+                    <div className="form-group">
+                        <label className="form-label">Nome Completo:</label>
+                        <input
+                            className="form-input"
+                            type="text"
+                            name="nome_completo"
+                            value={formData.nome_completo}
+                            onChange={handleChange}
+                            required
+                            placeholder="Digite o nome completo"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Email:</label>
+                        <input
+                            className="form-input"
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            placeholder="Digite o email"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label">Data de Nascimento:</label>
+                        <input
+                            className="form-input"
+                            type="date"
+                            name="data_nascimento"
+                            value={formData.data_nascimento}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div className="form-checkbox">
+                    <input
+                        className="checkbox-input"
+                        type="checkbox"
+                        name="ativo"
+                        checked={formData.ativo}
+                        onChange={handleChange}
+                        id="ativo"
+                    />
+                    <label className="form-label" htmlFor="ativo">Usuário Ativo</label>
+                </div>
+
+                <div className="form-actions">
+                    <button className="btn btn-primary" type="submit">
+                        {editando !== null ? '💾 Atualizar' : '➕ Cadastrar'}
+                    </button>
+                    {editando !== null && (
+                        <button
+                            className="btn btn-secondary"
+                            type="button"
+                            onClick={() => {
+                                setEditando(null);
+                                setFormData({
+                                    nome_completo: '',
+                                    email: '',
+                                    data_nascimento: '',
+                                    ativo: false
+                                });
+                            }}
+                        >
+                            ❌ Cancelar
+                        </button>
+                    )}
+                </div>
+            </form>
+
+            <div className="usuarios-section">
+                <div className="usuarios-header">
+                    <h3 className="usuarios-title">📊 Usuários Cadastrados ({usuariosFiltrados.length})</h3>
+                    
+                    {usuarios.length > 0 && (
+                        <div className="filtros-container">
+                            <div className="filtro-busca">
+                                <label className="filtro-label">🔍 Buscar:</label>
+                                <input
+                                    className="filtro-input"
+                                    type="text"
+                                    value={filtro}
+                                    onChange={handleFilterChange}
+                                    placeholder="Digite nome ou email..."
+                                />
+                            </div>
+                            
+                            <div className="filtro-datas">
+                                <div className="filtro-data-grupo">
+                                    <label className="filtro-label">📅 Data Início:</label>
+                                    <input
+                                        className="filtro-input-date"
+                                        type="date"
+                                        value={filtroDataInicio}
+                                        onChange={handleDataInicioChange}
+                                    />
+                                </div>
+                                
+                                <div className="filtro-data-grupo">
+                                    <label className="filtro-label">📅 Data Fim:</label>
+                                    <input
+                                        className="filtro-input-date"
+                                        type="date"
+                                        value={filtroDataFim}
+                                        onChange={handleDataFimChange}
+                                    />
+                                </div>
+                            </div>
+                            
+                            {(filtro || filtroDataInicio || filtroDataFim) && (
+                                <button
+                                    className="btn-clear-filters"
+                                    onClick={limparFiltros}
+                                    title="Limpar todos os filtros"
+                                >
+                                    🗑️ Limpar Filtros
+                                </button>
+                            )}
+                        </div>
+                    )}
+                </div>
+
+                {usuarios.length === 0 ? (
+                    <div className="empty-state">
+                        <div className="empty-icon">📭</div>
+                        <div className="empty-text">Nenhum usuário cadastrado</div>
+                        <div className="empty-subtext">Use o formulário acima para adicionar o primeiro usuário</div>
+                    </div>
+                ) : usuariosFiltrados.length === 0 ? (
+                    <div className="empty-state">
+                        <div className="empty-icon">🔍</div>
+                        <div className="empty-text">Nenhum usuário encontrado</div>
+                        <div className="empty-subtext">Tente ajustar os filtros de busca</div>
+                    </div>
+                ) : (
+                    <table className="usuarios-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome Completo</th>
+                                <th>Email</th>
+                                <th>Data de Nascimento</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {usuariosFiltrados.map(usuario => (
+                                <tr key={usuario.id}>
+                                    <td>#{usuario.id}</td>
+                                    <td>{usuario.nome_completo}</td>
+                                    <td>{usuario.email}</td>
+                                    <td>{new Date(usuario.data_nascimento).toLocaleDateString('pt-BR')}</td>
+                                    <td>
+                                        <span style={{
+                                            background: usuario.ativo ? '#d1fae5' : '#fee2e2',
+                                            color: usuario.ativo ? '#065f46' : '#991b1b',
+                                            padding: '4px 8px',
+                                            borderRadius: '12px',
+                                            fontSize: '0.8rem',
+                                            fontWeight: '600'
+                                        }}>
+                                            {usuario.ativo ? '✅ Ativo' : '❌ Inativo'}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div className="table-actions">
+                                            <button
+                                                className="btn-edit"
+                                                onClick={() => handleEdit(usuario)}
+                                            >
+                                                ✏️ Editar
+                                            </button>
+                                            <button
+                                                className="btn-delete"
+                                                onClick={() => handleDelete(usuario.id)}
+                                            >
+                                                🗑️ Excluir
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
+            <Footer />
+        </div>
+    );
+}

@@ -1,0 +1,107 @@
+/* Estilos da seção principal (card) */
+.ticket-section {
+    flex: 1;
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    min-height: 400px;
+    margin: 1.5rem auto;
+    padding: 1.8rem;
+    background-color: var(--background-card);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border: 1px solid rgba(0, 188, 212, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.ticket-input {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    width: 200px;
+}
+
+.ticket-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.2);
+}
+
+/* Estilos específicos para a tabuada */
+.tabuada-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.ok-button {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ok-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+.ok-button:active {
+    transform: translateY(0);
+}
+
+.resultado-tabuada {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.resultado-tabuada p {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+    color: var(--text-light);
+}
+
+/* Animações e efeitos */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 188, 212, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 188, 212, 0);
+    }
+}

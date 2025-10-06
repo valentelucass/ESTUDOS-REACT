@@ -1,0 +1,9 @@
+.pagina-planos {
+
+    .lista-planos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+}
