@@ -15,6 +15,22 @@
       "companyName": "",
       "email": "lucas.andrade@email.com",
       "password": "senhaforte456"
+    },
+    {
+      "id": "c3a8",
+      "firstName": "lucas",
+      "lastName": "andrade",
+      "companyName": "lucas corp",
+      "email": "teste@teste.com",
+      "password": "123456"
+    },
+    {
+      "id": "2c11",
+      "firstName": "Lucas Mateus",
+      "lastName": "Andrade da costa",
+      "companyName": "Lossantos Brasil",
+      "email": "lucasmac.dev@gmail.com",
+      "password": "123456"
     }
   ],
   "products": [

@@ -41,7 +41,12 @@ const Header = () => {
     return (
         <header className="header-container">
             <div className="header-content">
-                <div className="logo">LOSSANTOS</div>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <div className="logo">
+                        LOSSANTOS
+                    </div>
+                </Link>
+
 
                 <nav className="navigation">
                     <Link to="/">Home</Link>

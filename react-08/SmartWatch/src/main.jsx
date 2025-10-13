@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+
+
 
 import './index.css'
 import Home from './pages/home/index.jsx'
@@ -13,12 +16,14 @@ import CarrinhoPage from './pages/carrinho/index.jsx'
 import CadastroPage from './pages/cadastro/index.jsx'
 import LoginPage from './pages/login/index.jsx'
 import AddProduto from './pages/add-produto/index.jsx'
+import RastreioPage from './pages/rastreio/index.jsx'
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/smartwatch" element={<SmartWatchPage />} />
@@ -30,6 +35,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/add-produto" element={<AddProduto />} />
+        <Route path="/rastreio" element={<RastreioPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
